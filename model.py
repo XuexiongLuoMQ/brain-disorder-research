@@ -126,7 +126,7 @@ class Net(nn.Module):
         att=torch.softmax(sub_ht, dim=0)
         h_s=(att * sub_e).sum(0,keepdim=True)
         y_s=self.lin1(h_s)
-        _, a_i = torch.topk(att.squeeze(-1),dim=0,k=15)
+        _, a_i = torch.topk(att.squeeze(-1),dim=0,k=self.k)
         for x in a_i:
             dd=sub[x]
             ss_bb.append(dd)    
